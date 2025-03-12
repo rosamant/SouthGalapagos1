@@ -6,11 +6,11 @@ Natural Gamma Radiation data used for this paper is stored in .csv files and is 
 
 The repository contains the R scripts for the DTW calculations performed and presented for the Paleoceanography and Paleoclimatology paper. The separate R script `Custom Step Pattern.R` has the custom step pattern asymmetricP1.1 required for the DTW correlation technique, which must be run first. The `U1482-SG1_Seismic-NGR.R` contains the DTW correlation seen in Figure S1. 
 
-`SG1_Seismics-NF_Cyclostratigraphy.R´ file contains the actual tuning information, spectral and wavelet analyses, and the script to plot all the figures. 
+`SG1_Seismics-NF_Cyclostratigraphy.R` file contains the actual tuning information, spectral and wavelet analyses, and the script to plot all the figures. 
 
-`Picard1-Minilya1.R´ and `Picard1-U1464.R´ scripts for the DTW correlation must be run first before the `NGR-IndustrialSites.R´. This file contains the lines for plotting Figure 12. `U1447-U1501-U1482-SG1-NGR.R´ must be used for plotting Figure 13.
+`Picard1-Minilya1.R` and `Picard1-U1464.R` scripts for the DTW correlation must be run first before the `NGR-IndustrialSites.R`. This file contains the lines for plotting Figure 12. `U1447-U1501-U1482-SG1-NGR.R` must be used for plotting Figure 13.
 
-The updated CENOGRID data and metadata between 15.55 and 20 Ma is updated by replacing data from ODP Site 1264 (Liebrand et al., 2016) and IODP Site U1490 (Holbourn et al., 2020). The updated data and metadata is provided in the data folder.
+The updated CENOGRID data and metadata between 15.55 and 20 Ma is updated by replacing data from ODP Site 1264 (Liebrand et al., 2016) and IODP Site U1490 (Holbourn et al., 2020). The updated data and metadata are provided in the data folder.
 
 ## License
 
