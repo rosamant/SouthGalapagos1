@@ -4,7 +4,7 @@
 
 Natural Gamma Radiation data used for this paper is stored in .csv files and is freely available through the National Offshore Petroleum Information Management System (NOPIMS, Geoscience Australia) (https://www.ga.gov.au/nopims). The core-based NGR data for the IODP Sites  is available through the IODP repository (https://web.iodp.tamu.edu/LORE/?appl=LORE&reportName=ngr). The scientific downhole logging data is available at https://mlp.ldeo.columbia.edu/logdb/. 
 
-The repository contains the R scripts for the DTW calculations performed and presented for the Paleoceanography and Paleoclimatology paper. The separate R script `Custom Step Pattern.R´ has the custom step pattern asymmetricP1.1 required for the DTW correlation technique, which must be run first. The `U1482-SG1_Seismic-NGR.R´ contains the DTW correlation seen in Figure S1. 
+The repository contains the R scripts for the DTW calculations performed and presented for the Paleoceanography and Paleoclimatology paper. The separate R script ´Custom Step Pattern.R´ has the custom step pattern asymmetricP1.1 required for the DTW correlation technique, which must be run first. The `U1482-SG1_Seismic-NGR.R´ contains the DTW correlation seen in Figure S1. 
 
 `SG1_Seismics-NF_Cyclostratigraphy.R´ file contains the actual tuning information, spectral and wavelet analyses, and the script to plot all the figures. 
 
