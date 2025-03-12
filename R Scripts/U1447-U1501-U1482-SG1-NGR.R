@@ -104,15 +104,15 @@ clean_data <- function(data, y_col, threshold) {
 U1447K_on_U1447AGE_clean <- clean_data(U1447K_on_U1447AGE, "K", threshold = 2.5)
 
 ############################
-# Make Figure 17
+# Make Figure 13
 ###########################
 
 
 #setwd("Figures/")
 
-pdf(file = "Fig 17.pdf", width = 8.5, height = 11, paper = "a4")
+pdf(file = "Fig 13.pdf", width = 8.5, height = 11, paper = "a4")
 
-png(filename = "Fig 17.png", width = 5000, height = 6000, res = 600)
+png(filename = "Fig 13.png", width = 5000, height = 6000, res = 600)
 
 par(mar=c(0,5,1,5))
  

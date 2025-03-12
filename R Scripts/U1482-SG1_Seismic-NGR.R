@@ -83,9 +83,9 @@ lines(SouthGalapagos1_on_U1482_depth, type = "l", col = "red")
 
 #setwd("Figures/")
 
-pdf(file = "Figure 3.pdf", width = 8.5, height = 11, paper = "a4")
+pdf(file = "Fig S1.pdf", width = 8.5, height = 11, paper = "a4")
 
-png(filename = "Fig 3.png", width = 6000, height = 4000, res = 600)
+png(filename = "Fig S1.png", width = 6000, height = 4000, res = 600)
 
 
 plot(U1482_standardized, type = "l", xlim = c(0,540), ylim = c(-15,15), axes = F, xaxs = "i", xlab = "", ylab = "")

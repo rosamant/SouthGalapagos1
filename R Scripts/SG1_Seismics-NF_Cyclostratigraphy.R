@@ -305,14 +305,14 @@ dev.off()
 
 
 ############################
-# Make Figure 8
+# Make Figure 4
 ###########################
 
 setwd("Figures/")
 
-pdf(file = "Figure 8.pdf", width = 8.5, height = 11, paper = "a4")
+pdf(file = "Figure 4.pdf", width = 8.5, height = 11, paper = "a4")
 
-png(filename = "Fig 8.png", width = 6000, height = 4000, res = 600)
+png(filename = "Figure 4.png", width = 6000, height = 4000, res = 600)
 
 par(mar=c(0,8,1,1))
 layout(matrix(c(1,2,3,4), 4, 1, byrow = TRUE), widths=c(1,1,1,1), heights=c(0.75,0.75,0.80,0.95))
@@ -360,7 +360,7 @@ dev.off()
 
 
 ############################
-# Make Figure 5
+# Make Figure S3
 ###########################
 
 age2_depth_age <- tune(age_model2, cbind(SG1_polynomialAgeModel[,2], SG1_polynomialAgeModel[,1]), extrapolate = T)
@@ -390,9 +390,9 @@ write.csv(SouthGalapagos1_DepthAge, file = "data/SouthGalapagos1_DepthAge.csv", 
 
 #setwd("Figures/")
 
-pdf(file = "Figure 5.pdf", width = 8.5, height = 11, paper = "a4")
+pdf(file = "Fig S3.pdf", width = 8.5, height = 11, paper = "a4")
 
-png(filename = "Fig 5.png", width = 6000, height = 4000, res = 600)
+png(filename = "Fig S3.png", width = 6000, height = 4000, res = 600)
 
 par(mar=c(5,4,1,0))
 layout(matrix(c(1,2), 1, 2, byrow = TRUE), widths=c(1,1.05), heights=c(1,1))
@@ -451,39 +451,57 @@ dev.off()
 
 
 ############################
-# Make Figure 9 - d18O & d13C - Burdigalian & Aquitanian
+# Make Figure 3
 ###########################
 
-#setwd("Figures/")
+setwd("C:/Users/Rohit/OneDrive - Universität Münster/Paper Drafts/Paper 2/Figures/")
 
-pdf(file = "Figure 9.pdf", width = 8.5, height = 11, paper = "a4")
+pdf(file = "Figure 3.pdf", width = 8.5, height = 11, paper = "a4")
 
-png(filename = "Fig 9.png", width = 6000, height = 6000, res = 600)
+png(filename = "Figure 3.png", width = 6000, height = 6000, res = 600)
 
-par(mar=c(0,5,1,5))
-layout(matrix(c(1,2), 2, 1, byrow = TRUE), widths=c(1,1), heights=c(1,1.25))
+par(mar=c(5,4,2,2))
 
-plot(CENO_d13C$Time_Ma, CENO_d13C$d13C, xlim = c(15.5,23.03), xaxs = "i", type = "l", col = mycol[3], ylim = c(3.5,-1.0), axes = F, xlab = "", ylab = "")
+plot(age1_depth_age[,2], age1_depth_age[,1], type = "n", ylim = c(1300,400), xlim = c(0, 23.03), xaxs = "i", yaxs = "i", axes = F, xlab = "", ylab = "")
+points(age2_depth_age[,2], age2_depth_age[,1], col = mycol[1], pch = 19, cex = 1.15)
+lines(SouthGalapagos1_DepthAge$Time_Ma, SouthGalapagos1_DepthAge$Depth, col = mycol[1], lwd = 2)
+points(age1_depth_age$Age[T_events], age1_depth_age$Depth[T_events], pch = 25, cex = 1.15, bg = mycol[8])                       # Color of points
+points(age1_depth_age$Age[B_events], age1_depth_age$Depth[B_events], pch = 24, cex = 1.15, bg = mycol[7])                       # Color of points
+points(age1_depth_age$Age[SH_events], age1_depth_age$Depth[SH_events], pch = 15, cex = 1.15, col = mycol[5])                       # Color of points
 
-rect(21,5,21.3,-2, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(20.15,5,20.25,-2, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(19.35,5,19.45,-2, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(17.35,5,17.65,-2, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(15.95,5,16.1,-2, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(15.63,5,15.5,-2, col = rgb(254/255,217/255,154/255), border = NA, )
-
-lines(CENO_d13C$Time_Ma, CENO_d13C$d13C, col = mycol[3], lwd = 2)
-axis(2, at = c(3.0,2.0,1.0,0.0,-1.0), col = mycol[3], col.axis = mycol[3], cex.axis = 1.25)
-mtext(expression("Benthic"~delta^13*"C (‰)"), at = 1, side = 2, line = 2.5, cex = 1.3, col = mycol[3])
-text(16.5, -0.8, "(a)", cex = 1.25)
-
-par(new = T)
-plot(SG1_agemodel2_i, type = "l", xlim = c(15.5,23.03), xaxs = "i", col = mycol[5], ylim = c(80,15), lwd = 2, axes = F, xlab = "", ylab = "")
-axis(4, at = c(65, seq(20,65,15)), cex.axis = 1.25, col = mycol[5], col.axis = mycol[5])
-mtext("NGR (gAPI)", at = 45, side = 4, line = 2.5, cex = 1.3, col = mycol[5])
+axis(1, at = c(0,2.58,5.33,11.63,15.98,23.03), cex.axis = 1.25)
+axis(2, at = c(400, seq(400,1200,200)), cex.axis = 1.25)
 box()
 
-par(mar=c(5,5,0,5))
+rect(0,1300,2.58,1250, col = rgb(255/255,242/255,174/255))
+rect(2.58,1300,5.33,1250, col = rgb(255/255,255/255,153/255))
+rect(5.33,1300,23.03,1250, col = rgb(255/255,255/255,0/255))
+
+text(1.4, 1275, "Pleist.", cex = 1.25)
+text(3.95, 1275, "Plio.", cex = 1.25)
+text(14.25, 1275, "Miocene", cex = 1.25)
+
+mtext("Age (Ma)", side = 1, line = 2.5, cex = 1.2)
+mtext("Depth (m)", side = 2, line = 2.5, cex = 1.2)
+legend(x=12,y=480, legend = c("   U1482C Base Bioevent", "   U1482C Top Bioevent", "   Seismic Horizons", "   CENOGRID Tuned Age Model (n=31)"), col = c(mycol[7], mycol[8], mycol[5], mycol[1]), 
+       pt.bg = c(mycol[7], mycol[8], mycol[5], mycol[1]), pch = c(24,25,15,19), pt.cex = 1.75, cex = 1.2, bty = "n")
+legend(x=11.5,y=580, legend = c("Tuned Age Model"), col = c(mycol[1]), lwd = 2, cex = 1.2, bty = "n")
+
+dev.off()
+
+
+############################
+# Make Figure 5 - d18O & d13C - Burdigalian & Aquitanian
+###########################
+
+setwd("C:/Users/Rohit/OneDrive - Universität Münster/Paper Drafts/Paper 2/Figures/")
+
+pdf(file = "Figure 5.pdf", width = 8.5, height = 11, paper = "a4")
+
+png(filename = "Fig 5.png", width = 6000, height = 4000, res = 600)
+
+
+par(mar=c(5,5,1,5))
 
 plot(CENO$Time_Ma, CENO$d18O, xlim = c(15.5,23.03), xaxs = "i", type = "l", ylim = c(5.5,1.0), axes = F, xlab = "", ylab = "")
 
@@ -499,7 +517,6 @@ axis(1, at = c(15.5,17.0,18.0,19.0,20.0,21.0,22.0,23.03), cex.axis = 1.25)
 axis(2, at = c(5.0,4.0,3.0,2.0,1.0), cex.axis = 1.25)
 mtext("Age (Ma)", side = 1, line = 2.5, cex = 1.3)
 mtext(expression("Benthic"~delta^18*"O (‰)"), at = 3, side = 2, line = 2.5, cex = 1.3)
-text(16.5, 1.15, "(b)", cex = 1.25)
 
 rect(15.5,5.35,15.98,5.68, col = rgb(255/255,255/255,0/255))
 rect(15.98,5.35,23.03,5.68, col = rgb(255/255,255/255,0/255))
@@ -528,41 +545,17 @@ dev.off()
 
 
 ###########################
-# Make Figure 10 - d18O & d13C - Serravallian & Langhian
+# Make Figure 6 - d18O & d13C - Serravallian & Langhian
 ###########################
 
 
-#setwd("Figures/")
+setwd("C:/Users/Rohit/OneDrive - Universität Münster/Paper Drafts/Paper 2/Figures/")
 
-pdf(file = "Figure 10.pdf", width = 8.5, height = 11, paper = "a4")
+pdf(file = "Figure 6.pdf", width = 8.5, height = 11, paper = "a4")
 
-png(filename = "Fig 10.png", width = 6000, height = 6000, res = 600)
+png(filename = "Fig 6.png", width = 6000, height = 4000, res = 600)
 
-par(mar=c(0,5,1,5))
-layout(matrix(c(1,2), 2, 1, byrow = TRUE), widths=c(1,1), heights=c(1,1.25))
-
-plot(CENO_d13C$Time_Ma, CENO_d13C$d13C, xlim = c(11.0,16.5), xaxs = "i", type = "l", col = mycol[3], ylim = c(3.5,-1.0), axes = F, xlab = "", ylab = "")
-
-rect(16.1,5,15.95,-2, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(15.63,5,15.5,-2, col = rgb(254/255,217/255,154/255), border = NA, )
-rect(14.95,5,15.05,-2, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(14.75,5,14.85,-2, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(13.75,5,13.85,0-2, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(12.75,5,13,-2, col = rgb(217/255,241/255,247/255), border = NA, )
-
-lines(CENO_d13C$Time_Ma, CENO_d13C$d13C, col = mycol[3], lwd = 2)
-axis(2, at = c(-1.0,0,1.0,2.0,3.0), col = mycol[3], col.axis = mycol[3], cex.axis = 1.25)
-mtext(expression("Benthic"~delta^13*"C (‰)"), at = 1, side = 2, line = 2.5, cex = 1.3, col = mycol[3])
-text(11.5, -0.8, "(a)", cex = 1.25)
-
-par(new = T)
-plot(SG1_agemodel2_i, type = "l", xlim = c(11.0,16.5), xaxs = "i", col = mycol[5], ylim = c(80,15), lwd = 2, axes = F, xlab = "", ylab = "")
-axis(4, at = c(65, seq(20,65,15)), cex.axis = 1.25, col = mycol[5], col.axis = mycol[5])
-mtext("NGR (gAPI)", at = 45, side = 4, line = 2.5, cex = 1.3, col = mycol[5])
-box()
-
-
-par(mar=c(5,5,0,5))
+par(mar=c(5,5,1,5))
 
 plot(CENO$Time_Ma, CENO$d18O, xlim = c(11.0,16.5), xaxs = "i", type = "l", ylim = c(5.5,1.0), axes = F, xlab = "", ylab = "")
 
@@ -578,12 +571,11 @@ axis(1, at = c(11.0,12.0,13.0,14.0,15.0,16.0,16.5), cex.axis = 1.25)
 axis(2, at = c(5.0,4.0,3.0,2.0,1.0), cex.axis = 1.25)
 mtext(expression("Benthic"~delta^18*"O (‰)"), at = 3, side = 2, line = 2.5, cex = 1.3)
 mtext("Age (Ma)", side = 1, line = 2.5, cex = 1.3)
-text(11.5, 1.2, "(b)", cex = 1.25)
 text(12.32, 1.5, "Anti-phase", cex = 1.25, col = "red")
 text(13.05, 1.5, "In-phase", cex = 1.25)
 text(12.6, 4.1, "Phase shift", cex = 1.25, srt = 90)
 
-text(12.0, 3.9, "see Fig. 13", cex = 1.05, col = "red")
+text(12.0, 3.9, "see Fig. 9", cex = 1.05, col = "red")
 text(12.0, 4.15, "for opposite", cex = 1.05, col = "red")
 text(12.0, 4.4, "phase-relationship", cex = 1.05, col = "red")
 
@@ -607,6 +599,9 @@ mtext("NGR (gAPI)", at = 40, side = 4, line = 2.5, cex = 1.3, col = mycol[5])
 rect(12.7,72.7,12.7,9, col = rgb(217/255,241/255,247/255))
 box()
 
+arrows(x0 = 14.1, y0 = 15, x1 = 14.8, y1 = 15, length = 0.1, col = "black", lwd = 2)
+arrows(x0 = 13.5, y0 = 15, x1 = 12.8, y1 = 15, length = 0.1, col = "black", lwd = 2)
+text(13.8, 15, "MMCT")
 
 text(16.02, 67, "Mi2", srt = 90)
 text(15.56, 63, "Peak MMCO", srt = 90)
@@ -619,37 +614,16 @@ dev.off()
 
 
 ############################
-# Make Figure 13 - d18O & d13C - Tortonian & Serravallian
+# Make Figure 9 - d18O & d13C - Tortonian & Serravallian
 ###########################
 
-#setwd("Figures/")
+setwd("C:/Users/Rohit/OneDrive - Universität Münster/Paper Drafts/Paper 2/Figures/")
 
-pdf(file = "Figure 13.pdf", width = 8.5, height = 11, paper = "a4")
+pdf(file = "Figure 9.pdf", width = 8.5, height = 11, paper = "a4")
 
-png(filename = "Fig 13.png", width = 6000, height = 6000, res = 600)
+png(filename = "Fig 9.png", width = 6000, height = 4000, res = 600)
 
-par(mar=c(0,5,1,5))
-layout(matrix(c(1,2), 2, 1, byrow = TRUE), widths=c(1,1), heights=c(1,1.25))
-
-plot(CENO_d13C$Time_Ma, CENO_d13C$d13C, xlim = c(7.246,13.82), xaxs = "i", type = "l", col = mycol[3], ylim = c(3,-2.0), axes = F, xlab = "", ylab = "")
-
-rect(12.75,5,13,-3, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(10.7,5,10.83,-3, col = rgb(254/255,217/255,154/255), border = NA, )
-rect(10.65,5,10.55,-3, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(9.85,5,9.75,-3, col = rgb(217/255,241/255,247/255), border = NA, )
-
-lines(CENO_d13C$Time_Ma, CENO_d13C$d13C, col = mycol[3], lwd = 2)
-axis(2, at = c(2.0,1.0,0,-1.0,-2.0), col = mycol[3], col.axis = mycol[3], cex.axis = 1.25)
-mtext(expression("Benthic"~delta^13*"C (‰)"), at = 0, side = 2, line = 2.5, cex = 1.3, col = mycol[3])
-text(8.25, -1.8, "(a)", cex = 1.25)
-
-par(new = T)
-plot(SG1_agemodel2_i, type = "l", xlim = c(7.246,13.82), xaxs = "i", col = mycol[5], ylim = c(0,65), lwd = 2, axes = F, xlab = "", ylab = "")
-axis(4, at = c(65, seq(20,65,15)), cex.axis = 1.25, col = mycol[5], col.axis = mycol[5])
-mtext("NGR (gAPI)", at = 45, side = 4, line = 2.5, cex = 1.3, col = mycol[5])
-box()
-
-par(mar=c(5,5,0,5))
+par(mar=c(5,5,1,5))
 
 plot(CENO$Time_Ma, CENO$d18O, xlim = c(7.246,13.82), xaxs = "i", type = "l", ylim = c(4.5,1.5), axes = F, xlab = "", ylab = "")
 
@@ -663,12 +637,11 @@ axis(1, at = c(7.25,8.0,9.0,10.0,11.0,12.0,13.0,13.82), cex.axis = 1.25)
 axis(2, at = c(3.5,2.5,1.5), cex.axis = 1.25)
 mtext("Age (Ma)", side = 1, line = 2.5, cex = 1.3)
 mtext(expression("Benthic"~delta^18*"O (‰)"), at = 3, side = 2, line = 2.5, cex = 1.3)
-text(8.25, 1.7, "(b)", cex = 1.25)
 text(12.2, 1.7, "Anti-phase", cex = 1.25, col = "red")
 text(13.1, 1.7, "In-phase", cex = 1.25)
 text(12.6, 3.7, "Phase shift", cex = 1.25, srt = 90)
 
-text(13.37, 3.4, "see Fig. 10", cex = 1.05, col = "red")
+text(13.37, 3.4, "see Fig. 6", cex = 1.05, col = "red")
 text(13.37, 3.55, "for opposite", cex = 1.05, col = "red")
 text(13.37, 3.7, "phase", cex = 1.05, col = "red")
 text(13.37, 3.85, "relationship", cex = 1.05, col = "red")
@@ -689,6 +662,11 @@ mtext("NGR (gAPI)", at = 45, side = 4, line = 2.5, cex = 1.3, col = mycol[5])
 rect(12.7,70,12.7,9, col = rgb(217/255,241/255,247/255))
 box()
 
+#arrows(x0 = 13.85, y0 = 60, x1 = 13.85, y1 = 15, length = 0.1, col = mycol[5], lwd = 2)
+#arrows(x0 = 13.85, y0 = 15, x1 = 13.85, y1 = 60, length = 0.1, col = mycol[5], lwd = 2)
+#text(13.85, 63, "High", col = mycol[5], cex = 1.2)
+#text(13.85, 12, "Low", col = mycol[5], cex = 1.2)
+
 text(9.8, 12, "Mi7", srt = 90)
 text(10.6, 12, "Mi6", srt = 90)
 text(12.87, 12, "Mi4", srt = 90)
@@ -697,38 +675,17 @@ dev.off()
 
 
 ############################
-# Make Figure 14 - d18O & d13C - - Messinian & Tortonian
+# Make Figure 10 - d18O & d13C - - Messinian & Tortonian
 ###########################
 
-#setwd("Figures/")
+setwd("C:/Users/Rohit/OneDrive - Universität Münster/Paper Drafts/Paper 2/Figures/")
 
-pdf(file = "Figure 14.pdf", width = 8.5, height = 11, paper = "a4")
+pdf(file = "Figure 10.pdf", width = 8.5, height = 11, paper = "a4")
 
-png(filename = "Fig 14.png", width = 6000, height = 6000, res = 600)
+png(filename = "Fig 10.png", width = 6000, height = 4000, res = 600)
 
-par(mar=c(0,5,1,5))
-layout(matrix(c(1,2), 2, 1, byrow = TRUE), widths=c(1,1), heights=c(1,1.25))
 
-plot(CENO_d13C$Time_Ma, CENO_d13C$d13C, xlim = c(4.5,8), xaxs = "i", type = "l", col = mycol[3], ylim = c(2,-2.0), axes = F, xlab = "", ylab = "")
-
-rect(5.73,5,4.9,-3, col = rgb(254/255,230/255,170/255), border = NA, )
-rect(5.81,5,5.73,-3, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(5.23,5,5.17,-3, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(5.03,5,4.97,-3, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(4.78,5,4.9,-3, col = rgb(217/255,241/255,247/255), border = NA, )
-
-lines(CENO_d13C$Time_Ma, CENO_d13C$d13C, col = mycol[3], lwd = 2)
-axis(2, at = c(1.0,0,-1.0,-2.0), col = mycol[3], col.axis = mycol[3], cex.axis = 1.25)
-mtext(expression("Benthic"~delta^13*"C (‰)"), at =-0.5, side = 2, line = 2.5, cex = 1.3, col = mycol[3])
-text(5, -1.8, "(a)", cex = 1.25)
-
-par(new = T)
-plot(SG1_agemodel2_i, type = "l", xlim = c(4.5,8), xaxs = "i", col = mycol[5], ylim = c(5,70), lwd = 2, axes = F, xlab = "", ylab = "")
-axis(4, at = c(65, seq(20,65,15)), cex.axis = 1.25, col = mycol[5], col.axis = mycol[5])
-mtext("NGR (gAPI)", at = 45, side = 4, line = 2.5, cex = 1.3, col = mycol[5])
-box()
-
-par(mar=c(5,5,0,5))
+par(mar=c(5,5,1,5))
 
 plot(CENO$Time_Ma, CENO$d18O, xlim = c(4.5,8), xaxs = "i", type = "l", ylim = c(4.5,2.0), axes = F, xlab = "", ylab = "")
 
@@ -743,7 +700,6 @@ axis(1, at = c(4.5,5.0,6.0,7.0,8.0), cex.axis = 1.25)
 axis(2, at = c(4.0,3.0,2.0), cex.axis = 1.25)
 mtext(expression("Benthic"~delta^18*"O (‰)"), at = 3, side = 2, line = 2.5, cex = 1.3)
 mtext("Age (Ma)", side = 1, line = 2.5, cex = 1.3)
-text(5, 2.2, "(b)", cex = 1.25)
 
 rect(4.5,4.4,5.33,4.6, col = rgb(255/255,255/255,153/255))
 text(4.91, 4.5, "Pliocene", cex = 1.25)
@@ -763,6 +719,11 @@ axis(4, at = c(65, seq(20,65,15)), cex.axis = 1.25, col = mycol[5], col.axis = m
 mtext("NGR (gAPI)", at = 45, side = 4, line = 2.5, cex = 1.3, col = mycol[5])
 box()
 
+#arrows(x0 = 8.8, y0 = 60, x1 = 8.8, y1 = 15, length = 0.1, col = mycol[5], lwd = 2)
+#arrows(x0 = 8.8, y0 = 15, x1 = 8.8, y1 = 60, length = 0.1, col = mycol[5], lwd = 2)
+#text(8.8, 63, "High", col = mycol[5], cex = 1.2)
+#text(8.8, 12, "Low", col = mycol[5], cex = 1.2)
+
 text(5.77, 12, "TG22", srt = 90)
 text(5.2, 11.5, "TG4", srt = 90)
 text(5.0, 11, "T2", srt = 90)
@@ -773,42 +734,16 @@ dev.off()
 
 
 ############################
-# Make Figure 15 - d18O & d13C - Piacenzian & Zanclean
+# Make Figure 11 - d18O & d13C - Piacenzian & Zanclean
 ###########################
 
-#setwd("Figures/")
+setwd("C:/Users/Rohit/OneDrive - Universität Münster/Paper Drafts/Paper 2/Figures/")
 
-pdf(file = "Figure 15.pdf", width = 8.5, height = 11, paper = "a4")
+pdf(file = "Figure 11.pdf", width = 8.5, height = 11, paper = "a4")
 
-png(filename = "Fig 15.png", width = 6000, height = 6000, res = 600)
+png(filename = "Fig 11.png", width = 6000, height = 4000, res = 600)
 
-par(mar=c(0,5,1,5))
-layout(matrix(c(1,2), 2, 1, byrow = TRUE), widths=c(1,1), heights=c(1,1.25))
-
-plot(CENO_d13C$Time_Ma, CENO_d13C$d13C, xlim = c(2.49,5.33), xaxs = "i", type = "l", col = mycol[3], ylim = c(2,-3), axes = F, xlab = "", ylab = "")
-
-rect(3.26,5,2.78,-4, col = rgb(254/255,230/255,170/255), border = NA, )
-rect(2.7,5,2.78,-4, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(3.26,5,3.34,-4, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(4.33,5,4.41,-4, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(4.78,5,4.9,-4, col = rgb(217/255,241/255,247/255), border = NA, )
-
-rect(5.73,5,4.9,-4, col = rgb(254/255,230/255,170/255), border = NA, )
-rect(5.23,5,5.17,-4, col = rgb(217/255,241/255,247/255), border = NA, )
-rect(5.03,5,4.97,-4, col = rgb(217/255,241/255,247/255), border = NA, )
-
-lines(CENO_d13C$Time_Ma, CENO_d13C$d13C, col = mycol[3], lwd = 2)
-axis(2, at = c(1.0,0,-1.0,-2.0,-3.0), col = mycol[3], col.axis = mycol[3], cex.axis = 1.25)
-mtext(expression("Benthic"~delta^13*"C (‰)"), at = -0.5, side = 2, line = 2.5, cex = 1.3, col = mycol[3])
-text(2.75, -3, "(a)", cex = 1.25)
-
-par(new = T)
-plot(SG1_agemodel2_i, type = "l", xlim = c(2.49,5.33), xaxs = "i", col = mycol[5], ylim = c(10,70), lwd = 2, axes = F, xlab = "", ylab = "")
-axis(4, at = c(65, seq(20,65,15)), cex.axis = 1.25, col = mycol[5], col.axis = mycol[5])
-mtext("NGR (gAPI)", at = 45, side = 4, line = 2.5, cex = 1.3, col = mycol[5])
-box()
-
-par(mar=c(5,5,0,5))
+par(mar=c(5,5,1,5))
 
 plot(CENO$Time_Ma, CENO$d18O, xlim = c(2.49,5.333), xaxs = "i", type = "l", ylim = c(5.5,2.0), axes = F, xlab = "", ylab = "")
 
@@ -827,7 +762,6 @@ axis(1, at = c(2.49,3.0,3.5,4.0,4.5,5.0,5.33), cex.axis = 1.25)
 axis(2, at = c(5.0,4.0,3.0,2.0), cex.axis = 1.25)
 mtext("Age (Ma)", side = 1, line = 2.5, cex = 1.3)
 mtext(expression("Benthic"~delta^18*"O (‰)"), at = 3.5, side = 2, line = 2.5, cex = 1.3)
-text(2.75, 2, "(b)", cex = 1.25)
 
 rect(2.49,5.35,2.58,5.64, col = rgb(255/255,239/255,175/255))
 text(2.54, 5.5, "Pl.", cex = 1.25)
@@ -847,6 +781,11 @@ axis(4, at = c(65, seq(20,65,15)), cex.axis = 1.25, col = mycol[5], col.axis = m
 mtext("NGR (gAPI)", at = 45, side = 4, line = 2.5, cex = 1.3, col = mycol[5])
 box()
 
+#arrows(x0 = 5.1, y0 = 60, x1 = 5.1, y1 = 20, length = 0.1, col = mycol[5], lwd = 2)
+#arrows(x0 = 5.1, y0 = 20, x1 = 5.1, y1 = 60, length = 0.1, col = mycol[5], lwd = 2)
+#text(5.1, 63, "High", col = mycol[5], cex = 1.2)
+#text(5.1, 17, "Low", col = mycol[5], cex = 1.2)
+
 text(3.02, 13, "mPWP")
 text(2.74, 11.5, "G6", srt = 90)
 text(3.3, 11.5, "M2", srt = 90)
@@ -857,5 +796,3 @@ text(5.2, 12.5, "TG4", srt = 90)
 text(5.0, 11.5, "T2", srt = 90)
 
 dev.off()
-
-

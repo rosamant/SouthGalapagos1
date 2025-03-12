@@ -23,14 +23,14 @@ plot(U1464, type = 'l')
 SG1_agemodel2_i = read.csv("data/SG1_AgeModel2.csv")
 
 ############################
-# Make Figure 16
+# Make Figure 12
 ###########################
 
 setwd("Figures/")
 
-pdf(file = "Fig 16.pdf", width = 8.5, height = 11, paper = "a4")
+pdf(file = "Figure 12.pdf", width = 8.5, height = 11, paper = "a4")
 
-png(filename = "Fig 16.png", width = 5000, height = 6000, res = 600)
+png(filename = "Figure 12.png", width = 5000, height = 6000, res = 600)
 
 par(mar=c(0,5,1,5))
 

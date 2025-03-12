@@ -142,14 +142,14 @@ gradient_colors <- colorRampPalette(c("lightblue", "white", "gray"))(100)
 rev_gradient_colors <- rev(gradient_colors)  
 
 ############################
-# Make Figure 11
+# Make Figure 7
 ###########################
 
 #setwd("/Figures/")
 
-pdf(file = "Figure 11.pdf", width = 8.5, height = 11, paper = "a4")
+pdf(file = "Figure 7.pdf", width = 8.5, height = 11, paper = "a4")
 
-png(filename = "Fig 11.png", width = 6000, height = 5000, res = 600)
+png(filename = "Figure 7.png", width = 6000, height = 5000, res = 600)
 
 par(mar=c(5,1,5,0))
 
