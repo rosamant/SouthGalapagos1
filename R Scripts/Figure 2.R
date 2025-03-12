@@ -1,3 +1,7 @@
+install.packages(setdiff(c("viridis"), rownames(installed.packages())))
+
+library(viridis)
+
 # Import datasets
 
 # South Galapagos 1
