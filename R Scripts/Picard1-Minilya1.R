@@ -8,12 +8,12 @@ library(astrochron)
 
 # Import Picard1 and Minilya1 datasets
 
-Picard1 <- read.csv("data/PICARD 1.csv", header=TRUE, stringsAsFactors=FALSE)
+Picard1 <- read.csv("data/Picard 1.csv", header=TRUE, stringsAsFactors=FALSE)
 Picard1=Picard1[c(83:7750),] 
 head(Picard1)
 plot(Picard1, type="l", xlim = c(150, 1300), ylim = c(0, 50))
 
-Minilya1 <- read.csv("data/Minilya_1.csv", header=TRUE, stringsAsFactors=FALSE)
+Minilya1 <- read.csv("data/Minilya 1.csv", header=TRUE, stringsAsFactors=FALSE)
 Minilya1=Minilya1[c(1:5613),] 
 head(Minilya1)
 plot(Minilya1, type="l", xlim = c(150, 1100), ylim = c(0, 50))
@@ -25,15 +25,15 @@ Picard1_interpolated <- linterp(Picard1, dt = 0.2, genplot = F)
 Minilya1_interpolated <- linterp(Minilya1, dt = 0.2, genplot = F)
 
 # Scaling the data
-Pmean = Gmean(Picard1_interpolated$GR)
-Pstd = Gsd(Picard1_interpolated$GR)
-Picard1_scaled = (Picard1_interpolated$GR - Pmean)/Pstd
-Picard1_rescaled = data.frame(Picard1_interpolated$DEPT, Picard1_scaled)
+Pmean = Gmean(Picard1_interpolated$GR_gAPI)
+Pstd = Gsd(Picard1_interpolated$GR_gAPI)
+Picard1_scaled = (Picard1_interpolated$GR_gAPI - Pmean)/Pstd
+Picard1_rescaled = data.frame(Picard1_interpolated$Depth_mbrt, Picard1_scaled)
 
-Mmean = Gmean(Minilya1_interpolated$GR)
-Mstd = Gsd(Minilya1_interpolated$GR)
-Minilya1_scaled = (Minilya1_interpolated$GR - Mmean)/Mstd
-Minilya1_rescaled = data.frame(Minilya1_interpolated$DEPT, Minilya1_scaled)
+Mmean = Gmean(Minilya1_interpolated$GR_gAPI)
+Mstd = Gsd(Minilya1_interpolated$GR_gAPI)
+Minilya1_scaled = (Minilya1_interpolated$GR_gAPI - Mmean)/Mstd
+Minilya1_rescaled = data.frame(Minilya1_interpolated$Depth_mbrt, Minilya1_scaled)
 
 # Resampling the data using moving window statistics
 Picard1_scaled = mwStats(Picard1_rescaled, cols = 2, win = 3, ends = T)

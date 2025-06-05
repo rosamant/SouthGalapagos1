@@ -8,7 +8,7 @@ library(astrochron)
 
 # Import Picard1 and U1464 datasets
 
-Picard1 <- read.csv("data/PICARD 1.csv", header=TRUE, stringsAsFactors=FALSE)
+Picard1 <- read.csv("data/Picard 1.csv", header=TRUE, stringsAsFactors=FALSE)
 Picard1=Picard1[c(83:7750),] 
 head(Picard1)
 plot(Picard1, type="l", xlim = c(150, 1300), ylim = c(0, 50))
@@ -32,14 +32,14 @@ Picard1_interpolated <- linterp(Picard1, dt = 0.2, genplot = F)
 U1464_interpolated <- linterp(U1464, dt = 0.2, genplot = F)
 
 # Scaling the data
-Pmean = Gmean(Picard1_interpolated$GR)
-Pstd = Gsd(Picard1_interpolated$GR)
-Picard1_scaled = (Picard1_interpolated$GR - Pmean)/Pstd
-Picard1_rescaled = data.frame(Picard1_interpolated$DEPT, Picard1_scaled)
+Pmean = Gmean(Picard1_interpolated$GR_gAPI)
+Pstd = Gsd(Picard1_interpolated$GR_gAPI)
+Picard1_scaled = (Picard1_interpolated$GR_gAPI - Pmean)/Pstd
+Picard1_rescaled = data.frame(Picard1_interpolated$Depth_mbrt, Picard1_scaled)
 
-Umean = Gmean(U1464_interpolated$HSGR)
-Ustd = Gsd(U1464_interpolated$HSGR)
-U1464_scaled = (U1464_interpolated$HSGR - Umean)/Ustd
+Umean = Gmean(U1464_interpolated$HSGR_gAPI)
+Ustd = Gsd(U1464_interpolated$HSGR_gAPI)
+U1464_scaled = (U1464_interpolated$HSGR_gAPI - Umean)/Ustd
 U1464_rescaled = data.frame(U1464_interpolated$DEPTH_WMSF, U1464_scaled)
 
 # Resampling the data using moving window statistics

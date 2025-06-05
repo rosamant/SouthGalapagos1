@@ -4,17 +4,17 @@ library(RColorBrewer)
 library(viridis)
 
 
-Picard1 = read.csv("data/Picard 1.csv")
+Picard1 = read.csv("data/Picard 1_ageNGR.csv")
 Picard1[,1] = Picard1[,1]/1000
 plot(Picard1, type = 'l')
 
 
-Minilya1 = read.csv("data/Minilya 1.csv")
+Minilya1 = read.csv("data/Minilya 1_ageNGR.csv")
 Minilya1[,1] = Minilya1[,1]/1000
 plot(Minilya1, type = 'l')
 
 
-U1464 = read.csv("data/U1464.csv")
+U1464 = read.csv("data/U1464_ageNGR.csv")
 U1464[,1] = U1464[,1]/1000
 plot(U1464, type = 'l')
 
@@ -65,7 +65,7 @@ box()
 par(mar=c(5,5,0,5))
 
 plot(Picard1, type = "l", ylim = c(0,50), xlim = c(2.49,10.0), xaxs = "i", col = mycol[6], lwd = 2, axes = F, xaxt = "n", xlab = "", ylab = "")
-axis(1, at = c(2.58,3.6,5.33,7.24,10.00), cex.axis = 1.75)
+axis(1, at = c(2.58,3.0,3.6,4.0,5.0,5.33,6.0,7.24,8.0,9.0,10.00), labels = c("2.58", "3.0", "3.6", "4.0", "5.0", "5.33", "6.0", "7.24", "8.0", "9.0", "10.00"), cex.axis = 1.75)
 axis(2, at = c(50, seq(10,50,20)), cex.axis = 1.75, col = mycol[6], col.axis = mycol[6])
 mtext("Age (Ma)", side = 1, line = 2.5, cex = 1.25)
 mtext("NGR (gAPI)", at = 30, side = 2, line = 2.5, cex = 1.0, col = mycol[6])

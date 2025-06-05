@@ -1,11 +1,11 @@
-install.packages(setdiff(c("astrochron", "zoo", "RColorBrewer", "viridis"), rownames(installed.packages())))
+install.packages(setdiff(c("astrochron", "RColorBrewer", "viridis"), rownames(installed.packages())))
 
 #setwd("Figures/")
 
 library(RColorBrewer)
 library(viridis)
 library(astrochron)
-library(zoo)
+
 
 # Import South Galapagos 1 NGR
 SG1_agemodel2_i = read.csv("data/SG1_AgeModel2.csv")
@@ -115,7 +115,7 @@ pdf(file = "Fig 13.pdf", width = 8.5, height = 11, paper = "a4")
 png(filename = "Fig 13.png", width = 5000, height = 6000, res = 600)
 
 par(mar=c(0,5,1,5))
- 
+
 layout(matrix(c(1,2,3,4), 4, 1, byrow = TRUE), widths=c(1,1,1,1), heights=c(1,1,1,1.75))
 
 plot(U1447K_on_U1447AGE_clean$`Age (Ma)`, U1447K_on_U1447AGE_clean$K, xlim = c(2.49,10.7), ylim = c(0.8,2.5), type = "n", xaxs = "i", axes = F, xlab = "", ylab = "")
@@ -154,7 +154,7 @@ box()
 par(mar=c(5,5,0,5))
 
 plot(SG1_agemodel2_i, xlim = c(2.49,10.7), xaxs = "i", type = "l", ylim = c(10,65), col = mycol[4], lwd = 2, axes = F, xlab = "", ylab = "")
-axis(1, at = c(2.58,3.6,5.33,7.24,10.70), cex.axis = 1.75)
+axis(1, at = c(2.58,3.0,3.6,4.0,5.0,5.33,6.0,7.24,8.0,9.0,10.0,10.70), labels = c("2.58", "3.0", "3.6", "4.0", "5.0", "5.33", "6.0", "7.24", "8.0", "9.0", "10.0","10.7"), cex.axis = 1.75)
 axis(2, at = c(65, seq(20,65,15)), cex.axis = 1.75, col = mycol[4], col.axis = mycol[4])
 mtext("NGR (gAPI)", side = 2, line = 2.5, cex = 1.2, col = mycol[4])
 mtext("Age (Ma)", side = 1, line = 2.5, cex = 1.25)
